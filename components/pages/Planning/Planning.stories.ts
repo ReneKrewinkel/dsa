@@ -1,12 +1,12 @@
 import React from 'react'
 import { Meta, StoryObj } from '@storybook/react'
 import PlanningSrc from './Planning'
-import { PlanningInterface  } from './Planning.interface'
+import { PlanningInterface } from './Planning.interface'
 import { PlanningMock } from './Planning.mock'
 
 /// TODO: Adapt Planning Stories
 const PlanningMeta: Meta<typeof PlanningSrc> = {
-    title: "pages/Planning",
+    title: 'pages/Planning',
     component: PlanningSrc,
     tags: ['autodocs'],
     argTypes: {
