@@ -39,9 +39,13 @@ const Planning = ({ testID, style, type, size, props }: PlanningInterface) => {
 
           <Text>{ JSON.stringify(allJobs, null, 2)}</Text>
 
-            <TouchableOpacity onPress={() => __killStuff()}>
-                <Text>Kill stuff</Text>
-            </TouchableOpacity>
+          <TouchableOpacity onPress={() => router.push('/overview')}>
+            <Text>Overview Pagina</Text>
+          </TouchableOpacity>
+
+            {/*<TouchableOpacity onPress={() => __killStuff()}>*/}
+            {/*    <Text>Kill stuff</Text>*/}
+            {/*</TouchableOpacity>*/}
 
           <TouchableOpacity onPress={() => __addStuff()}>
             <Text>Add stuff</Text>
