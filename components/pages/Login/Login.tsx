@@ -8,32 +8,32 @@ import { useContext, useState } from 'react'
 import { SecurityContext } from '@/context'
 
 const Login = ({ testID }: LoginInterface) => {
-    const secCtx = useContext(SecurityContext)
-    const [username, setUsername] = useState('')
-    const [password, setPassword] = useState('')
+  const secCtx = useContext(SecurityContext)
+  const [username, setUsername] = useState('')
+  const [password, setPassword] = useState('')
 
-    const __doLogin = async () => {
-        try {
-            secCtx.setUsername(username)
-            /// TODO: HASH PASSWORD
-            secCtx.setPassword(password)
-            await login(username, scramblePassword(password))
+  const __doLogin = async () => {
+    try {
+      secCtx.setUsername(username)
+      /// TODO: HASH PASSWORD
+      secCtx.setPassword(password)
+      await login(username, scramblePassword(password))
 
-            router.push('/home')
-        } catch (error) {
-            console.error('Login failed:', error)
-        }
+      router.push('/home')
+    } catch (error) {
+      console.error('Login failed:', error)
     }
+  }
 
-    return (
-        <View testID={testID} style={LoginStyle.View}>
-            <Text style={LoginStyle.Text}>Login Scherm</Text>
+  return (
+    <View testID={testID} style={LoginStyle.View}>
+      <Text style={LoginStyle.Text}>Login Scherm</Text>
 
-            <TouchableOpacity onPress={() => __doLogin()}>
-                <Text>LOGIN</Text>
-            </TouchableOpacity>
-        </View>
-    )
+      <TouchableOpacity onPress={() => __doLogin()}>
+        <Text>LOGIN</Text>
+      </TouchableOpacity>
+    </View>
+  )
 }
 
 export default Login
