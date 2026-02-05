@@ -11,7 +11,7 @@ const TabBarStyle = StyleSheet.create({
     alignItems: 'center',
     borderTopWidth: 1,
     borderTopColor: '#ccc',
-    backgroundColor: '#f9f9f9',
+    backgroundColor: '#f9f9f9'
   },
   TabButton: {
     marginVertical: 5,
@@ -24,12 +24,12 @@ const TabBarStyle = StyleSheet.create({
   },
   TabButtonActive: {
     borderBottomWidth: 4,
-    borderBottomColor: '#007AFF',
+    borderBottomColor: '#007AFF'
   },
   TabText: {
     fontSize: 22,
     textTransform: 'uppercase',
-    fontWeight: '600',
+    fontWeight: '600'
   }
 })
 

@@ -1,4 +1,4 @@
-import {config} from '@/config'
+import { config } from '@/config'
 import * as SQLite from 'expo-sqlite'
 
 export const initDatabase = async () => {
@@ -15,7 +15,6 @@ export const initDatabase = async () => {
         );
     `)
 
-
   await db.execAsync(`
         PRAGMA journal_mode = 'wal';
         PRAGMA encoding='UTF-8';
@@ -27,7 +26,6 @@ export const initDatabase = async () => {
         );
     `)
 }
-
 
 export const deleteDatabase = async () => {
   await SQLite.deleteDatabaseAsync(config.DATABASE_NAME)

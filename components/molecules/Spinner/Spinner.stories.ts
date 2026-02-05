@@ -6,17 +6,17 @@ import { SpinnerMock } from './Spinner.mock'
 
 /// TODO: Adapt Spinner Stories
 const SpinnerMeta: Meta<typeof SpinnerSrc> = {
-    title: 'molecules/Spinner',
-    component: SpinnerSrc,
-    tags: ['autodocs'],
-    argTypes: {
-        testID: { table: { disable: true } }
-    }
+  title: 'molecules/Spinner',
+  component: SpinnerSrc,
+  tags: ['autodocs'],
+  argTypes: {
+    testID: { table: { disable: true } }
+  }
 }
 
 type Story = StoryObj<typeof SpinnerSrc>
 export const Spinner: Story = {
-    args: { ...SpinnerMock }
+  args: { ...SpinnerMock }
 }
 
 export default SpinnerMeta

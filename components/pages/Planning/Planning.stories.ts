@@ -6,17 +6,17 @@ import { PlanningMock } from './Planning.mock'
 
 /// TODO: Adapt Planning Stories
 const PlanningMeta: Meta<typeof PlanningSrc> = {
-    title: 'pages/Planning',
-    component: PlanningSrc,
-    tags: ['autodocs'],
-    argTypes: {
-        testID: { table: { disable: true } }
-    }
+  title: 'pages/Planning',
+  component: PlanningSrc,
+  tags: ['autodocs'],
+  argTypes: {
+    testID: { table: { disable: true } }
+  }
 }
 
 type Story = StoryObj<typeof PlanningSrc>
 export const Planning: Story = {
-    args: { ...PlanningMock }
+  args: { ...PlanningMock }
 }
 
 export default PlanningMeta
