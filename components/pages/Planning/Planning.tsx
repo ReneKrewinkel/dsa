@@ -1,5 +1,5 @@
 // import { useState, useEffect, useContext } from 'react'
-import { View, Text, TouchableOpacity } from 'react-native'
+import { View, Text, TouchableOpacity, Modal } from 'react-native'
 import { PlanningInterface } from './Planning.interface'
 import PlanningStyle from './Planning.style'
 import { useContext, useState } from 'react'
@@ -15,6 +15,7 @@ const Planning = ({ testID, style, type, size, props }: PlanningInterface) => {
 
   const [databaseData, setDatabaseData] = useState<any>(null)
   const [allJobs, setAllJobs] = useState<any>(null)
+  const [showDetail, setShowDetail] = useState<boolean>(false)
 
   const __killStuff = async () => {
     await removeData('udId')
@@ -45,6 +46,21 @@ const Planning = ({ testID, style, type, size, props }: PlanningInterface) => {
     console.log(result)
   }
 
+
+  const __renderModal = () => {
+    return(
+      <Modal visible={showDetail} animationType={'fade'} transparent={true}>
+        <View style={{ flex:1, backgroundColor: "rgba(0,0,0,0.4)", padding: 80, alignItems: 'center', justifyContent: 'flex-start', display: 'flex' }}>
+        <View style={{ width: 300, height: 300, backgroundColor: 'white', borderRadius: 10, alignItems: 'center', justifyContent: 'center' }}>
+        <TouchableOpacity onPress={() => setShowDetail(false)}>
+          <Text>close Modal</Text>
+        </TouchableOpacity>
+        </View>
+        </View>
+      </Modal>
+    )
+  }
+
   return (
     <View testID={testID} style={PlanningStyle.View}>
 
@@ -61,6 +77,10 @@ const Planning = ({ testID, style, type, size, props }: PlanningInterface) => {
       {/*<TouchableOpacity onPress={() => router.push('/overview')}>*/}
       {/*  <Text>Overview Pagina</Text>*/}
       {/*</TouchableOpacity>*/}
+
+      <TouchableOpacity onPress={() => setShowDetail(true)}>
+        <Text>Show Modal</Text>
+      </TouchableOpacity>
 
       {/*<TouchableOpacity onPress={() => __killStuff()}>*/}
       {/*    <Text>Kill stuff</Text>*/}
@@ -81,6 +101,8 @@ const Planning = ({ testID, style, type, size, props }: PlanningInterface) => {
       {/*  </TouchableOpacity>*/}
       {/*}*/}
 
+
+      { __renderModal() }
 
     </View>
   )
