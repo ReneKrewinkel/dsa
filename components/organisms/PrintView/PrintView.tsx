@@ -17,6 +17,8 @@ const PrintView = ({testID, style, type, size, props }:PrintViewInterface) => {
         await shareAsync(uri, { UTI: '.pdf', mimeType: 'application/pdf' });
     };
 
+    const img = 'https://www.aldofietsen.nl/storage/cache/images/01KCPYN83M22ZNE9QV8S14FVMN_1600x1200_scale-down_5f5252ad956b17b16e5e719a3d05613d.png'
+
     const html = `
 <html>
   <head>
@@ -27,7 +29,7 @@ const PrintView = ({testID, style, type, size, props }:PrintViewInterface) => {
       Hello Expo!
     </h1>
     <img
-      src="https://www.aldofietsen.nl/storage/cache/images/01KCPYN83M22ZNE9QV8S14FVMN_1600x1200_scale-down_5f5252ad956b17b16e5e719a3d05613d.png"
+      src="${img}"
       style="width: 90vw;" />
   </body>
 </html>

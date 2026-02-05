@@ -8,6 +8,7 @@ import { router } from 'expo-router'
 import {removeData, createJob, fetchJobs, sendPlanningData, testTimeout} from '@/lib'
 import {Heading} from '@/components/atoms'
 import {PrintView, ShowCamera, Signature} from '@/components/organisms'
+import {UserDropdown} from '@/components/molecules'
 
 const Planning = ({ testID, style, type, size, props }: PlanningInterface) => {
   const jobCtx = useContext(JobContext)
@@ -47,6 +48,7 @@ const Planning = ({ testID, style, type, size, props }: PlanningInterface) => {
   return (
     <View testID={testID} style={PlanningStyle.View}>
 
+      <UserDropdown />
       <Heading text="Planning" />
       <Heading text={"Voor Vandaag"} size={18} />
 
@@ -54,7 +56,7 @@ const Planning = ({ testID, style, type, size, props }: PlanningInterface) => {
       {/*<ShowCamera />*/}
       {/*<Signature />*/}
 
-      <PrintView />
+      {/*<PrintView />*/}
 
       {/*<TouchableOpacity onPress={() => router.push('/overview')}>*/}
       {/*  <Text>Overview Pagina</Text>*/}
