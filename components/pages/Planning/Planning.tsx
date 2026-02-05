@@ -5,7 +5,9 @@ import PlanningStyle from './Planning.style'
 import { useContext, useState } from 'react'
 import { JobContext } from '@/context'
 import { router } from 'expo-router'
-import { removeData, createJob, fetchJobs } from '@/lib'
+import {removeData, createJob, fetchJobs, sendPlanningData, testTimeout} from '@/lib'
+import {Heading} from '@/components/atoms'
+import {PrintView, ShowCamera, Signature} from '@/components/organisms'
 
 const Planning = ({ testID, style, type, size, props }: PlanningInterface) => {
   const jobCtx = useContext(JobContext)
@@ -20,8 +22,16 @@ const Planning = ({ testID, style, type, size, props }: PlanningInterface) => {
   }
 
   const __fetchStuff = async () => {
-    const data = await fetchJobs()
-    setAllJobs(data)
+
+    testTimeout(2000).then((data) => {
+      setAllJobs(data)
+    })
+      .catch((error) => {
+        console.error('Error fetching data:', error)
+      })
+
+    // const data = await fetchJobs()
+    // setAllJobs(data)
   }
 
   const __addStuff = async () => {
@@ -29,29 +39,47 @@ const Planning = ({ testID, style, type, size, props }: PlanningInterface) => {
     setDatabaseData(result)
   }
 
+  const __sendStuff = async () => {
+    const result = await sendPlanningData(allJobs)
+    console.log(result)
+  }
+
   return (
     <View testID={testID} style={PlanningStyle.View}>
-      <Text>{JSON.stringify(jobCtx.jobs)}</Text>
 
-      <Text>{JSON.stringify(databaseData)}</Text>
+      <Heading text="Planning" />
+      <Heading text={"Voor Vandaag"} size={18} />
 
-      <Text>{JSON.stringify(allJobs, null, 2)}</Text>
 
-      <TouchableOpacity onPress={() => router.push('/overview')}>
-        <Text>Overview Pagina</Text>
-      </TouchableOpacity>
+      {/*<ShowCamera />*/}
+      {/*<Signature />*/}
+
+      <PrintView />
+
+      {/*<TouchableOpacity onPress={() => router.push('/overview')}>*/}
+      {/*  <Text>Overview Pagina</Text>*/}
+      {/*</TouchableOpacity>*/}
 
       {/*<TouchableOpacity onPress={() => __killStuff()}>*/}
       {/*    <Text>Kill stuff</Text>*/}
       {/*</TouchableOpacity>*/}
 
-      <TouchableOpacity onPress={() => __addStuff()}>
-        <Text>Add stuff</Text>
-      </TouchableOpacity>
+      {/*<TouchableOpacity onPress={() => __addStuff()}>*/}
+      {/*  <Text>Add stuff</Text>*/}
+      {/*</TouchableOpacity>*/}
 
-      <TouchableOpacity onPress={() => __fetchStuff()}>
-        <Text>Fetch stuff</Text>
-      </TouchableOpacity>
+      {/*<TouchableOpacity onPress={() => __fetchStuff()}>*/}
+      {/*  <Text>Fetch stuff</Text>*/}
+      {/*</TouchableOpacity>*/}
+
+      {/*{*/}
+      {/*  allJobs &&*/}
+      {/*  <TouchableOpacity onPress={() => __sendStuff()}>*/}
+      {/*      <Text>Bon Gereed melden</Text>*/}
+      {/*  </TouchableOpacity>*/}
+      {/*}*/}
+
+
     </View>
   )
 }

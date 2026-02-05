@@ -5,3 +5,8 @@ export const COLORS = {
   TEXT: '#2c3e50',
   WHITE: '#ffffff'
 }
+
+export const HeaderStyle = {
+  fontFamily: 'AllRound',
+  fontSize: 24,
+}

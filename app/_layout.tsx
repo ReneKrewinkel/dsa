@@ -3,7 +3,9 @@ import { Stack } from 'expo-router'
 import { useState, useEffect, useId } from 'react'
 import { config } from '@/config'
 import { useCheckDatabase } from '@/hooks'
-import { useMyId } from '@/hooks/useMyId/useMyId'
+
+import { useFonts } from 'expo-font'
+
 
 export default function RootLayout() {
   const [isLoggedIn, setIsLoggedIn] = useState(false)
@@ -29,6 +31,12 @@ export default function RootLayout() {
     setUdId,
     deviceToken: config.DEVICE_TOKEN
   }
+
+
+  const [fontsLoaded, fontError] = useFonts({
+    AllRound: require('../assets/fonts/all-round.ttf'),
+    Bariol: require('../assets/fonts/bariol.ttf')
+  })
 
   return (
     <SecurityContext.Provider value={SecurityContextValue}>
